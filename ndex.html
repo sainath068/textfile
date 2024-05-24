@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Good Morning Text</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+        }
+        #container {
+            font-size: 2rem;
+            color: #2c3e50;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.15em solid #2c3e50;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 42% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #2c3e50; }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">Good morning Shree</div>
+
+    <script>
+        const container = document.getElementById('container');
+
+        function resetAnimation() {
+            container.style.animation = 'none';
+            container.offsetHeight; /* trigger reflow */
+            container.style.animation = 'typing 4s steps(12, start), blink-caret 0.75s step-end infinite';
+        }
+
+        container.addEventListener('animationend', resetAnimation);
+
+        // Start the initial animation
+        resetAnimation();
+    </script>
+</body>
+</html>
